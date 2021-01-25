@@ -1,13 +1,13 @@
 version: "3"
 services:
- file-server:
+ nginx:
   image: nginx:latest
   ports:
   - 443:443
   volumes:
   - ./certs/:/certs
-  - ./file-server.conf:/etc/nginx/conf.d/file-server.conf
-  - ./files:/files
+  - ./file-server_use.conf:/etc/nginx/conf.d/file-server.conf
+  - /home/hsowan/download:/files
+  - ./.passwdfile:/etc/nginx/conf.d/.passwdfile
   restart: always
   container_name: file-server
-
