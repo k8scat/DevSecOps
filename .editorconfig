@@ -6,4 +6,4 @@ indent_size = 2
 
 [*.{yaml,yml}]
 indent_style = space
-indent_size = 1
+indent_size = 2
