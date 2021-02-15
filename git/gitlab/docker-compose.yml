@@ -1,0 +1,17 @@
+version: '3'
+services:
+  git:
+    image: gitlab/gitlab-ce:13.8.4-ce.0
+    restart: always
+    hostname: 'example.com'
+    volumes:
+      - '/srv/gitlab/config:/etc/gitlab'
+      - '/srv/gitlab/logs:/var/log/gitlab'
+      - '/srv/gitlab/data:/var/opt/gitlab'
+    ports:
+      - '80:80'
+      - '443:443'
+      - '22:22'
+      # Default Container Registry Port
+      - '5050:5050'
+    container_name: gitlab
