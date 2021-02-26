@@ -1,9 +1,12 @@
-# 基于 Nginx 的文件下载服务
+# 基于 Nginx 和 Docker 的文件下载服务器
 
-## 支持的下载方式
+## 功能点
 
-- 认证下载，需要输入用户名和密码，例如：下载 [https://example.com/b.txt](https://example.com/b.txt)
-- 开放下载，不需要进行认证，例如：下载 [https://example.com/open/a.txt](https://example.com/open/a.txt)
+存放在 `/path/to/your/files` 目录下的文件可以被下载。
+
+- 查看文件列表，例如：访问 [https://example.com/files](https://example.com/files)
+- `/path/to/your/files` 目录下的文件需要认证下载，即需要输入用户名和密码，例如：下载 [https://example.com/files/a.txt](https://example.com/files/a.txt)
+- `/path/to/your/files/open` 目录下的文件不需要进行认证即可下载，例如：下载 [https://example.com/download/b.txt](https://example.com/download/b.txt)
 
 ## 快速开始
 
@@ -46,6 +49,15 @@ nginx:
     args:
       USERNAME: yourusername
       PASSWORD: yourpassword
+```
+
+### 设置文件存储目录
+
+在 [docker-compose.yaml](./docker-compose.yaml) 中将 `/path/to/your/files` 替换成使用的文件存储目录。
+
+```yaml
+volumes:
+    - /path/to/your/files:/files
 ```
 
 ### 启动服务
